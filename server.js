@@ -12,8 +12,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files
-app.use(express.static(path.join(__dirname)));
+// Serve static files from frontend folder
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 // API Routes
 app.get('/api/health', (req, res) => {
@@ -133,9 +133,10 @@ app.get('/api/skills', (req, res) => {
 });
 
 // Serve index.html for all other routes (SPA support)
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+// Note: Netlify handles this via redirects in netlify.toml
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+// });
 
 // Error handling middleware
 app.use((err, req, res, next) => {

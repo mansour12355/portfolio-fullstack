@@ -9,3 +9,6 @@ yarn-error.log*
 .idea/
 dist/
 build/
+
+# Local Netlify folder
+.netlify
